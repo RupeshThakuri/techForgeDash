@@ -33,7 +33,15 @@ interface InputProps {
 }
 
 const Input = ({ type, name, value, onChange }: InputProps) => {
-  return <input type={type} name={name} value={value} onChange={onChange} />;
+  return (
+    <input
+      type={type}
+      name={name}
+      value={value}
+      onChange={onChange}
+      className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 dark:border-gray-700 dark:bg-gray-800 dark:text-white"
+    />
+  );
 };
 
 export default function UserMetaCard() {
@@ -85,29 +93,30 @@ export default function UserMetaCard() {
   };
 
   if (loading) {
-    return <div>Loading...</div>;
+    return <div className="flex justify-center items-center h-screen">Loading...</div>;
   }
 
   if (error) {
-    return <div>{error}</div>;
+    return <div className="flex justify-center items-center h-screen text-red-500">{error}</div>;
   }
 
   if (!profileData) {
-    return <div>No profile data found.</div>;
+    return <div className="flex justify-center items-center h-screen">No profile data found.</div>;
   }
 
   return (
     <>
       {/* User Card */}
-      <div className="p-5 border border-gray-200 rounded-2xl dark:border-gray-800 lg:p-6">
+      <div className="p-5 border border-gray-200 rounded-2xl dark:border-gray-800 lg:p-6 bg-white dark:bg-gray-900 shadow-lg hover:shadow-xl transition-shadow duration-300">
         <div className="flex flex-col gap-5 xl:flex-row xl:items-center xl:justify-between">
           <div className="flex flex-col items-center w-full gap-6 xl:flex-row">
-            <div className="w-20 h-20 overflow-hidden border border-gray-200 rounded-full dark:border-gray-800">
+            <div className="w-20 h-20 overflow-hidden border border-gray-200 rounded-full dark:border-gray-800 shadow-md">
               <Image
                 width={80}
                 height={80}
                 src="/images/user/owner.jpg"
                 alt="user"
+                className="object-cover"
               />
             </div>
             <div className="order-3 xl:order-2">
@@ -126,45 +135,45 @@ export default function UserMetaCard() {
             </div>
             <div className="flex items-center order-2 gap-2 grow xl:order-3 xl:justify-end">
               {/* Facebook Button */}
-  {profileData.facebook && (
-    <a href={profileData.facebook} target="_blank" rel="noopener noreferrer">
-      <button className="flex h-11 w-11 items-center justify-center gap-2 rounded-full border border-gray-300 bg-white text-sm font-medium text-gray-700 shadow-theme-xs hover:bg-gray-50 hover:text-gray-800 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-white/[0.03] dark:hover:text-gray-200">
-        <FaFacebookF />
-      </button>
-    </a>
-  )}
-  
-  {/* Twitter Button */}
-  {profileData.twitter && (
-    <a href={profileData.twitter} target="_blank" rel="noopener noreferrer">
-      <button className="flex h-11 w-11 items-center justify-center gap-2 rounded-full border border-gray-300 bg-white text-sm font-medium text-gray-700 shadow-theme-xs hover:bg-gray-50 hover:text-gray-800 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-white/[0.03] dark:hover:text-gray-200">
-        <FaTwitter />
-      </button>
-    </a>
-  )}
+              {profileData.facebook && (
+                <a href={profileData.facebook} target="_blank" rel="noopener noreferrer">
+                  <button className="flex h-11 w-11 items-center justify-center gap-2 rounded-full border border-gray-300 bg-white text-sm font-medium text-gray-700 shadow-theme-xs hover:bg-gray-50 hover:text-gray-800 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-white/[0.03] dark:hover:text-gray-200 transition-colors duration-300">
+                    <FaFacebookF />
+                  </button>
+                </a>
+              )}
+              
+              {/* Twitter Button */}
+              {profileData.twitter && (
+                <a href={profileData.twitter} target="_blank" rel="noopener noreferrer">
+                  <button className="flex h-11 w-11 items-center justify-center gap-2 rounded-full border border-gray-300 bg-white text-sm font-medium text-gray-700 shadow-theme-xs hover:bg-gray-50 hover:text-gray-800 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-white/[0.03] dark:hover:text-gray-200 transition-colors duration-300">
+                    <FaTwitter />
+                  </button>
+                </a>
+              )}
 
-  {/* LinkedIn Button */}
-  {profileData.linkedin && (
-    <a href={profileData.linkedin} target="_blank" rel="noopener noreferrer">
-      <button className="flex h-11 w-11 items-center justify-center gap-2 rounded-full border border-gray-300 bg-white text-sm font-medium text-gray-700 shadow-theme-xs hover:bg-gray-50 hover:text-gray-800 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-white/[0.03] dark:hover:text-gray-200">
-        <FaLinkedinIn />
-      </button>
-    </a>
-  )}
+              {/* LinkedIn Button */}
+              {profileData.linkedin && (
+                <a href={profileData.linkedin} target="_blank" rel="noopener noreferrer">
+                  <button className="flex h-11 w-11 items-center justify-center gap-2 rounded-full border border-gray-300 bg-white text-sm font-medium text-gray-700 shadow-theme-xs hover:bg-gray-50 hover:text-gray-800 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-white/[0.03] dark:hover:text-gray-200 transition-colors duration-300">
+                    <FaLinkedinIn />
+                  </button>
+                </a>
+              )}
 
-  {/* Instagram Button */}
-  {profileData.instagram && (
-    <a href={profileData.instagram} target="_blank" rel="noopener noreferrer">
-      <button className="flex h-11 w-11 items-center justify-center gap-2 rounded-full border border-gray-300 bg-white text-sm font-medium text-gray-700 shadow-theme-xs hover:bg-gray-50 hover:text-gray-800 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-white/[0.03] dark:hover:text-gray-200">
-        <FaInstagram />
-      </button>
-    </a>
-  )}
+              {/* Instagram Button */}
+              {profileData.instagram && (
+                <a href={profileData.instagram} target="_blank" rel="noopener noreferrer">
+                  <button className="flex h-11 w-11 items-center justify-center gap-2 rounded-full border border-gray-300 bg-white text-sm font-medium text-gray-700 shadow-theme-xs hover:bg-gray-50 hover:text-gray-800 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-white/[0.03] dark:hover:text-gray-200 transition-colors duration-300">
+                    <FaInstagram />
+                  </button>
+                </a>
+              )}
             </div>
           </div>
           <button
             onClick={openModal}
-            className="flex w-full items-center justify-center gap-2 rounded-full border border-gray-300 bg-white px-4 py-3 text-sm font-medium text-gray-700 shadow-theme-xs hover:bg-gray-50 hover:text-gray-800 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-white/[0.03] dark:hover:text-gray-200 lg:inline-flex lg:w-auto"
+            className="flex w-full items-center justify-center gap-2 rounded-full border border-gray-300 bg-white px-4 py-3 text-sm font-medium text-gray-700 shadow-theme-xs hover:bg-gray-50 hover:text-gray-800 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-white/[0.03] dark:hover:text-gray-200 lg:inline-flex lg:w-auto transition-colors duration-300"
           >
             <svg
               className="fill-current"
@@ -188,7 +197,7 @@ export default function UserMetaCard() {
 
       {/* Edit Modal */}
       <Modal isOpen={isOpen} onClose={closeModal} className="max-w-[700px] m-4">
-        <div className="no-scrollbar relative w-full max-w-[700px] overflow-y-auto rounded-3xl bg-white p-4 dark:bg-gray-900 lg:p-11">
+        <div className="no-scrollbar relative w-full max-w-[700px] overflow-y-auto rounded-3xl bg-white p-4 dark:bg-gray-900 lg:p-11 shadow-2xl">
           <div className="px-2 pr-14">
             <h4 className="mb-2 text-2xl font-semibold text-gray-800 dark:text-white/90">
               Edit Personal Information
