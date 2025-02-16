@@ -33,14 +33,14 @@ const navItems: NavItem[] = [
     path: "/admin",
   },
   {
+    icon: <GridIcon />,
+    name: "Projects",
+    path: "/dashboard/projects",
+  },
+  {
     name: "Members",
     icon: <TableIcon />,
     path: "/dashboard/members",
-  },
-  {
-    icon: <GridIcon />,
-    name: "Projects",
-    path: "/dashboard/admin",
   },
   {
     icon: <CalenderIcon />,
